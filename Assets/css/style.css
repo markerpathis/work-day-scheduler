@@ -34,8 +34,6 @@ textarea {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
-  /* remove this */
-  background-color: red;
 }
 
 .hour {
