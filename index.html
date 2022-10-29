@@ -31,15 +31,19 @@
     <div class="container">
       <!-- Timeblocks go here -->
       <!-- https://getbootstrap.com/docs/4.0/components/input-group/ -->
-      <div class="input-group">
+      <form class="task-form input-group">
         <div class="input-group-prepend hour">
           <span class="input-group-text">9AM</span>
         </div>
-        <textarea class="form-control"></textarea>
+        <textarea
+          class="form-control task-input"
+          type="text"
+          name="task-input"
+        ></textarea>
         <div class="input-group-append">
           <button class="btn saveBtn btn-lg">Save</button>
         </div>
-      </div>
+      </form>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
