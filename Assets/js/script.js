@@ -22,6 +22,18 @@ var taskList = [];
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
+var format = "HH";
+var currentHour = today.hour();
+var time9AM = moment("9", format).hour();
+
+var diff9AM = currentHour - time9AM;
+if (diff9AM > 0) {
+  console.log("PAST");
+} else if (diff9AM < 0) {
+  console.log("FUTURE");
+} else {
+  console.log("PRESENT");
+}
 ///////////////////////////////////////////////////////////////////////////////////////
 // Functions
 ///////////////////////////////////////////////////////////////////////////////////////
