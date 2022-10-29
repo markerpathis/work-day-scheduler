@@ -20,12 +20,24 @@ function handleTaskSubmit(event) {
   } else {
     console.log(taskItem);
     taskList[0].taskDescription = taskItem;
-    storeTaskSubmit();
+    storeTaskList();
   }
 }
 
-function storeTaskSubmit() {
+function storeTaskList() {
   localStorage.setItem("taskList", JSON.stringify(taskList));
+}
+
+function retreiveTaskList() {
+  var storedTaskList = JSON.parse(localStorage.getItem("taskList"));
+  if (storedTaskList !== null) {
+    taskList = storedTaskList;
+    console.log("retreived!");
+  }
+}
+
+function init() {
+  retreiveTaskList();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -33,3 +45,5 @@ function storeTaskSubmit() {
 ///////////////////////////////////////////////////////////////////////////////////////
 
 inputGroupEl.on("submit", handleTaskSubmit);
+
+init();
