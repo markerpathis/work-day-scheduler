@@ -25,14 +25,23 @@ $("#currentDay").text(today.format("dddd, MMMM Do"));
 var format = "HH";
 var currentHour = today.hour();
 var time9AM = moment("9", format).hour();
+var time10AM = moment("10", format).hour();
 
 var diff9AM = currentHour - time9AM;
 if (diff9AM > 0) {
-  console.log("PAST");
+  textArea9am.addClass("past");
 } else if (diff9AM < 0) {
-  console.log("FUTURE");
+  textArea9am.addClass("future");
 } else {
-  console.log("PRESENT");
+  textArea9am.addClass("present");
+}
+var diff10AM = currentHour - time10AM;
+if (diff10AM > 0) {
+  textArea10am.addClass("past");
+} else if (diff10AM < 0) {
+  textArea10am.addClass("future");
+} else {
+  textArea10am.addClass("present");
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // Functions
