@@ -1,6 +1,13 @@
 var inputGroupEl = $(".task-form");
 var taskInputEl = $('textarea[name="task-input"]');
 
+var taskList = [
+  {
+    time: "9AM",
+    taskDescription: "",
+  },
+];
+
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
@@ -12,7 +19,17 @@ function handleTaskSubmit(event) {
     return;
   } else {
     console.log(taskItem);
+    taskList[0].taskDescription = taskItem;
+    storeTaskSubmit();
   }
 }
+
+function storeTaskSubmit() {
+  localStorage.setItem("taskList", JSON.stringify(taskList));
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Event Listeners
+///////////////////////////////////////////////////////////////////////////////////////
 
 inputGroupEl.on("submit", handleTaskSubmit);
