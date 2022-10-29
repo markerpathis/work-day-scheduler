@@ -1,20 +1,20 @@
-var inputGroupEl = $(".task-form");
-var taskInputEl = $('textarea[name="task-input"]');
-var nineAmEl = $("#time-block-9am");
-var taskList = [
-  {
-    time: "9AM",
-    taskDescription: "",
-  },
-];
+//HOOS TO FORMS FOR EVENT LISTENERS
+var form9AM = $(".task-form-9am");
+var form10AM = $(".task-form-10am");
+
+// HOOKS TO TEXT AREAS
+var textArea9am = $('textarea[name="task-input-9am"]');
+var textArea10am = $('textarea[name="task-input-10am"]');
+
+var taskList = [];
 
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
 
 function handleTaskSubmit(event) {
   event.preventDefault();
-  var taskItem = taskInputEl.val();
-  taskList[0].taskDescription = taskItem;
+  taskList[0] = textArea9am.val();
+  taskList[1] = textArea10am.val();
   storeTaskList();
 }
 
@@ -24,11 +24,9 @@ function storeTaskList() {
 
 function retreiveTaskList() {
   var storedTaskList = JSON.parse(localStorage.getItem("taskList"));
-  if (storedTaskList !== null) {
-    taskList = storedTaskList;
-    $("#time-block-9am").val(taskList[0].taskDescription);
-    console.log("retreived!");
-  }
+  taskList = storedTaskList;
+  textArea9am.val(taskList[0]);
+  textArea10am.val(taskList[1]);
 }
 
 function init() {
@@ -39,6 +37,7 @@ function init() {
 // Event Listeners
 ///////////////////////////////////////////////////////////////////////////////////////
 
-inputGroupEl.on("submit", handleTaskSubmit);
+form9AM.on("submit", handleTaskSubmit);
+form10AM.on("submit", handleTaskSubmit);
 
 init();
