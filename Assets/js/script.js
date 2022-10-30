@@ -26,6 +26,13 @@ var format = "HH";
 var currentHour = today.hour();
 var time9AM = moment("9", format).hour();
 var time10AM = moment("10", format).hour();
+var time11AM = moment("11", format).hour();
+var time12AM = moment("12", format).hour();
+var time1PM = moment("13", format).hour();
+var time2PM = moment("14", format).hour();
+var time3PM = moment("15", format).hour();
+var time4PM = moment("16", format).hour();
+var time5PM = moment("17", format).hour();
 
 var diff9AM = currentHour - time9AM;
 if (diff9AM > 0) {
