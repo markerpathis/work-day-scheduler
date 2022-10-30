@@ -2,11 +2,6 @@
 // Hooks to the UI
 ///////////////////////////////////////////////////////////////////////////////////////
 
-//HOOKS TO FORMS FOR EVENT LISTENERS
-var form9AM = $(".task-form-9am");
-var form10AM = $(".task-form-10am");
-
-// HOOKS TO TEXT AREAS
 var textArea9am = $('textarea[name="task-input-9am"]');
 var textArea10am = $('textarea[name="task-input-10am"]');
 var textArea11am = $('textarea[name="task-input-11am"]');
@@ -17,9 +12,7 @@ var textArea3pm = $('textarea[name="task-input-3pm"]');
 var textArea4pm = $('textarea[name="task-input-4pm"]');
 var textArea5pm = $('textarea[name="task-input-5pm"]');
 
-// var buttonsEl = document.querySelector("button");
 var buttonsEl = document.getElementsByClassName("btn");
-
 var taskList = [];
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -40,6 +33,10 @@ var time2PM = moment("14", format).hour();
 var time3PM = moment("15", format).hour();
 var time4PM = moment("16", format).hour();
 var time5PM = moment("17", format).hour();
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Calculate Past, Present, Future for Time Blocks
+///////////////////////////////////////////////////////////////////////////////////////
 
 var diff9AM = currentHour - time9AM;
 if (diff9AM > 0) {
