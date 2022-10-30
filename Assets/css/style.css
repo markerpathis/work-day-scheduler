@@ -30,8 +30,9 @@ textarea {
   border-radius: 15px;
 }
 
-.row {
-  white-space: pre-wrap;
+/* .row */
+.input-group {
+  /* white-space: pre-wrap; */
   height: 80px;
   border-top: 1px solid white;
 }
@@ -63,9 +64,17 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  text-align: center;
+
+  width: 75px;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+i {
+  display: inline-block;
+  width: 100%;
 }
