@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 // Hooks to the UI
 ///////////////////////////////////////////////////////////////////////////////////////
-
+// Text Areas
 var textArea9am = $('textarea[name="task-input-9am"]');
 var textArea10am = $('textarea[name="task-input-10am"]');
 var textArea11am = $('textarea[name="task-input-11am"]');
@@ -11,17 +11,18 @@ var textArea2pm = $('textarea[name="task-input-2pm"]');
 var textArea3pm = $('textarea[name="task-input-3pm"]');
 var textArea4pm = $('textarea[name="task-input-4pm"]');
 var textArea5pm = $('textarea[name="task-input-5pm"]');
-
+// Button (btn) class
 var buttonsEl = document.getElementsByClassName("btn");
+// Array for local storage
 var taskList = [];
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Moment
 ///////////////////////////////////////////////////////////////////////////////////////
-
+// Date and time for the header
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMMM Do"));
-
+// Time vars to compare against currentHour
 var format = "HH";
 var currentHour = today.hour();
 var time9AM = moment("9", format).hour();
@@ -34,17 +35,9 @@ var time3PM = moment("15", format).hour();
 var time4PM = moment("16", format).hour();
 var time5PM = moment("17", format).hour();
 
-// const array = [
-//   {
-//     time: time9AM,
-//     textArea: textArea9am
-//   }
-// ]
-
 ///////////////////////////////////////////////////////////////////////////////////////
 // Calculate Past, Present, Future for Time Blocks
 ///////////////////////////////////////////////////////////////////////////////////////
-
 var diff9AM = currentHour - time9AM;
 if (diff9AM > 0) {
   textArea9am.addClass("past");
@@ -129,11 +122,12 @@ if (diff5PM > 0) {
 ///////////////////////////////////////////////////////////////////////////////////////
 // Functions
 ///////////////////////////////////////////////////////////////////////////////////////
-
+// Stores the taskList array to local storage
 function storeTaskList() {
   localStorage.setItem("taskList", JSON.stringify(taskList));
 }
 
+// Retreives task list items from local storage and populates the values in the textareas
 function retreiveTaskList() {
   var storedTaskList = JSON.parse(localStorage.getItem("taskList"));
   if (storedTaskList !== null) {
@@ -150,6 +144,7 @@ function retreiveTaskList() {
   }
 }
 
+// Init function that pulls from local storage when the page is loaded
 function init() {
   retreiveTaskList();
 }
@@ -157,7 +152,7 @@ function init() {
 /////////////////////////////////////////////////////////////////////////////////////
 //Event Listeners
 /////////////////////////////////////////////////////////////////////////////////////
-
+// Listens for clicks on the buttons and saves the textarea values in the array
 for (var i = 0; i < buttonsEl.length; i++) {
   buttonsEl[i].addEventListener("click", function (event) {
     event.preventDefault();
@@ -181,10 +176,10 @@ for (var i = 0; i < buttonsEl.length; i++) {
     } else if (buttonClicked.value == 8) {
       taskList[8] = textArea5pm.val();
     }
+    // Stores the updated taskList array in local storage
     storeTaskList();
   });
 }
 
 // Calls the init function for when the page is loaded
-
 init();
