@@ -34,6 +34,13 @@ var time3PM = moment("15", format).hour();
 var time4PM = moment("16", format).hour();
 var time5PM = moment("17", format).hour();
 
+// const array = [
+//   {
+//     time: time9AM,
+//     textArea: textArea9am
+//   }
+// ]
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // Calculate Past, Present, Future for Time Blocks
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -129,16 +136,18 @@ function storeTaskList() {
 
 function retreiveTaskList() {
   var storedTaskList = JSON.parse(localStorage.getItem("taskList"));
-  taskList = storedTaskList;
-  textArea9am.val(taskList[0]);
-  textArea10am.val(taskList[1]);
-  textArea11am.val(taskList[2]);
-  textArea12pm.val(taskList[3]);
-  textArea1pm.val(taskList[4]);
-  textArea2pm.val(taskList[5]);
-  textArea3pm.val(taskList[6]);
-  textArea4pm.val(taskList[7]);
-  textArea5pm.val(taskList[8]);
+  if (storedTaskList !== null) {
+    taskList = storedTaskList;
+    textArea9am.val(taskList[0]);
+    textArea10am.val(taskList[1]);
+    textArea11am.val(taskList[2]);
+    textArea12pm.val(taskList[3]);
+    textArea1pm.val(taskList[4]);
+    textArea2pm.val(taskList[5]);
+    textArea3pm.val(taskList[6]);
+    textArea4pm.val(taskList[7]);
+    textArea5pm.val(taskList[8]);
+  }
 }
 
 function init() {
@@ -152,8 +161,7 @@ function init() {
 for (var i = 0; i < buttonsEl.length; i++) {
   buttonsEl[i].addEventListener("click", function (event) {
     event.preventDefault();
-    var buttonClicked = event.target;
-    console.log(buttonClicked.value);
+    var buttonClicked = event.currentTarget;
     if (buttonClicked.value == 0) {
       taskList[0] = textArea9am.val();
     } else if (buttonClicked.value == 1) {
